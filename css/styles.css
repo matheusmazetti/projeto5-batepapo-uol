@@ -1,5 +1,10 @@
 body{
     background: #f3f3f3;
+    font-family: Roboto;
+}
+
+::-webkit-scrollbar{
+    display: none;
 }
 header{
     background: #ffffff;
@@ -49,4 +54,39 @@ footer input{
 footer ion-icon{
     font-size: 30px;
     margin-right: 22px;
+}
+
+.messages{
+    width: 375px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    overflow-x: auto;
+}
+
+.status{
+    background: #dcdcdc;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.41px;
+    padding: 6px;
+}
+
+.bold{
+    font-weight: 700;
+}
+
+.claro{
+    color: #aaaaaa;
+}
+
+.mensagem{
+    background: #ffffff;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.41px;
+    padding: 6px;
 }
