@@ -43,18 +43,27 @@ function showMessages(mensagens){
     totalMessages.forEach(element => {
         if (element.type === "status"){
             let messagesText = document.querySelector(".messages");
-            messagesText.scrollIntoView(false);
-            messagesText.innerHTML += `<p class="status"><span class="claro">(${element.time})</span> <span class="bold">${element.from}</span> ${element.text}</p>`;
+            messagesText.innerHTML += `<p class="status" data-identifier="message"><span class="claro">(${element.time})</span> <span class="bold">${element.from}</span> ${element.text}</p>`;
         } else if (element.type === "message"){
             let messagesText = document.querySelector(".messages");
-            messagesText.innerHTML += `<p class="mensagem"><span class="claro">(${element.time})</span> <span class="bold">${element.from}</span> para <span class="bold">${element.to}</span>: ${element.text}</p>`;
-            
+            messagesText.innerHTML += `<p class="mensagem" data-identifier="message"><span class="claro">(${element.time})</span> <span class="bold">${element.from}</span> para <span class="bold">${element.to}</span>: ${element.text}</p>`;
         }
     });
 }
 
 function sendMessage(){
+    let messageText = document.querySelector(".message").value;
+    let send = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages",{
+        from: `${userName}`,
+        to: "Todos",
+        text: `${messageText}`,
+        type: "message"
+    })
+    send.catch(restart);
+}
 
+function restart(){
+    window.location.reload();
 }
 
 function showStatus(){
