@@ -18,6 +18,7 @@ function user(){
 function sucess(sucesso){
     statusEnvio = sucesso.status;
     setInterval(online, 5000);
+    reciveMessages();
     setInterval(reciveMessages, 3000);
     console.log(statusEnvio);
 }
@@ -40,15 +41,21 @@ function showMessages(mensagens){
     let clearHtml = document.querySelector(".messages");
     clearHtml.innerHTML = "";
     totalMessages = mensagens.data;
-    totalMessages.forEach(element => {
+    totalMessages.forEach(element => { 
         if (element.type === "status"){
             let messagesText = document.querySelector(".messages");
             messagesText.innerHTML += `<p class="status" data-identifier="message"><span class="claro">(${element.time})</span> <span class="bold">${element.from}</span> ${element.text}</p>`;
+            
         } else if (element.type === "message"){
             let messagesText = document.querySelector(".messages");
             messagesText.innerHTML += `<p class="mensagem" data-identifier="message"><span class="claro">(${element.time})</span> <span class="bold">${element.from}</span> para <span class="bold">${element.to}</span>: ${element.text}</p>`;
+            
         }
     });
+    let allMessages = document.querySelector(".messages");
+    let lastChild = allMessages.lastElementChild;
+    console.log(lastChild);
+    lastChild.scrollIntoView();
 }
 
 function sendMessage(){
@@ -64,11 +71,6 @@ function sendMessage(){
 
 function restart(){
     window.location.reload();
-}
-
-function showStatus(){
-    let messagesText = document.querySelector(".messages");
-    messagesText.innerHTML += `<p class="status"><span class="claro">(${statusMessage.time})</span> <b>${message.from}</b> ${message.text}</p>`;
 }
 
 user();

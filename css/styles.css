@@ -58,6 +58,7 @@ footer ion-icon{
 
 .messages{
     width: 375px;
+    height: 400px;
     margin-top: 80px;
     margin-bottom: 80px;
     overflow-x: auto;
