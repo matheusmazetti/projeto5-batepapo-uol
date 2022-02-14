@@ -59,13 +59,14 @@ function showMessages(mensagens){
 }
 
 function sendMessage(){
-    let messageText = document.querySelector(".message").value;
+    let messageText = document.querySelector(".message");
     let send = axios.post("https://mock-api.driven.com.br/api/v4/uol/messages",{
         from: `${userName}`,
         to: "Todos",
-        text: `${messageText}`,
+        text: `${messageText.value}`,
         type: "message"
     })
+    messageText.value = "";
     send.catch(restart);
 }
 
